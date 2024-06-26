@@ -2,10 +2,10 @@
 
 Возможности
 
-Регистрация и авторизация пользователей с помощью JWT
-CRUD-операции для задач (только для авторизованных пользователей)
-База данных PostgreSQL с использованием Prisma ORM
-Поддержка Docker для простого развертывания
+Регистрация и авторизация пользователей с помощью JWT;
+CRUD-операции для задач (только для авторизованных пользователей);
+База данных PostgreSQL с использованием Prisma ORM;
+Поддержка Docker для простого развертывания;
 
 Доступные эндпоинты
 
@@ -59,10 +59,10 @@ This is a REST API for managing a to-do list. It allows you to perform CRUD oper
 
 Features
 
-User registration and login with JWT authentication
-CRUD operations for tasks (only for authenticated users)
-PostgreSQL database with Prisma ORM
-Docker support for easy deployment
+User registration and login with JWT authentication;
+CRUD operations for tasks (only for authenticated users);
+PostgreSQL database with Prisma ORM;
+Docker support for easy deployment;
 
 API Endpoints
 
