@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:password@postgres:5432/test_task_db?schema=public"
+}
+
+model Users {
+  id       Int    @id @default(autoincrement()) // id autoincrement
+  email    String @unique @db.VarChar(255) // unique email field
+  password String
+  tasks    Tasks[] // OneToMany
+}
+
+model Tasks {
+  id          Int      @id @default(autoincrement()) // id autoincrement
+  title       String @unique @db.VarChar(255)
+  description String
+  status      Boolean
+  created_at  DateTime @default(now()) // created_at with default decorator
+  updated_at  DateTime? @updatedAt // updated_at with updatedAt decorator
+  user        Users     @relation(fields: [userId], references: [id]) // ManyToOne
+  userId      Int
+}

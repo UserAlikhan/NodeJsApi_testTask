@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: test_task_db
+    restart: unless-stopped
+    volumes:
+      - postgres:/data/db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5050:80
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    restart: unless-stopped
+
+  api:
+    build: .
+    ports:
+      - 3001:3001
+    volumes:
+      - ./:/app
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+volumes:
+  postgres:
