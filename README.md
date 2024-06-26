@@ -45,8 +45,6 @@ user_id: внешний ключ на таблицу пользователей
 Документация
 Этот файл README.md служит документацией для API.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 To-Do List REST API
 This is a REST API for managing a to-do list. It allows you to perform CRUD operations (create, read, update, and delete) on tasks. The API is built using PostgreSQL, Prisma ORM, Express.js, Docker, and features user authentication using JWT.
 
