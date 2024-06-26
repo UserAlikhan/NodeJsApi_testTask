@@ -1,9 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import { validationResult } from "express-validator";
 
+// Instance of the Class PrismaClient
 const usersClient = new PrismaClient().users;
 
-// Get All Users
+// The logic of Get All Users Endpoint
 export const getAllUsers = async (req, res) => {
     try {
         const users = await usersClient.findMany({
@@ -18,7 +20,7 @@ export const getAllUsers = async (req, res) => {
     }
 }
 
-// Get Specific User By Id
+// The logic of Get Specific User By Id Endpoint
 export const getUserById = async (req, res) => {
     try {
         const userId = req.params.id
@@ -37,7 +39,7 @@ export const getUserById = async (req, res) => {
     }
 }
 
-// Get Specific User By Email
+// The logic of Get Specific User By Email Endpoint
 export const getUserByEmail = async (req, res) => {
     try {
         const email = req.params.email
@@ -56,9 +58,14 @@ export const getUserByEmail = async (req, res) => {
     }
 }
 
-// Registrtion
+// The logic of Registration Endpoint
 export const registration = async (req, res) => {
     try {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            res.status(400).json(errors)
+        }
+
         const userData = req.body
         const user = await usersClient.create({
             data: userData
@@ -70,9 +77,14 @@ export const registration = async (req, res) => {
     }
 }
 
-// Login
+// The logic of Login Endpoint
 export const login = async (req, res) => {
     try {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            res.status(400).json(errors)
+        }
+
         const token = jwt.sign(
             { id: req.user.id, email: req.user.email },
             process.env.JWT_SECTER,

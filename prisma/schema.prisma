@@ -21,7 +21,7 @@ model Tasks {
   description String
   status      Boolean
   created_at  DateTime @default(now()) // created_at with default decorator
-  updated_at  DateTime? @updatedAt // updated_at with updatedAt decorator
+  updated_at  DateTime? @updatedAt // updated_at with updatedAt decorator (this field may be null)
   user        Users     @relation(fields: [userId], references: [id]) // ManyToOne
   userId      Int
 }

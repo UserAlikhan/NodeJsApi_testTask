@@ -15,5 +15,3 @@ COPY . .
 RUN chmod +x start.sh
 
 CMD ["./start.sh"]
-
-# RUN sh ./start.sh
